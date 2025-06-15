@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "BagIt.sln",
+    "projects": [
+      "src\\BagIt.ApiService\\BagIt.ApiService.csproj",
+      "src\\BagIt.ServiceDefaults\\BagIt.ServiceDefaults.csproj",
+      "src\\BagIt.AppHost\\BagIt.AppHost.csproj"
+    ]
+  }
+}

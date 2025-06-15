@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.3.0" />
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>7b1529a4-9f9f-4eb2-99e3-f811146b2277</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" />
+        <PackageReference Include="Aspire.Hosting.Keycloak" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BagIt.ApiService\BagIt.ApiService.csproj" />
+    </ItemGroup>
+
+</Project>

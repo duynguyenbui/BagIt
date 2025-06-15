@@ -1,0 +1,6 @@
+@BagIt.ApiService_HostAddress = http://localhost:5143
+
+GET {{BagIt.ApiService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
