@@ -13,10 +13,11 @@
     <ItemGroup>
         <PackageReference Include="Aspire.Hosting.AppHost" />
         <PackageReference Include="Aspire.Hosting.Keycloak" />
+        <PackageReference Include="Aspire.Hosting.SqlServer" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BagIt.ApiService\BagIt.ApiService.csproj" />
+      <ProjectReference Include="..\BagIt.Cloud.API\BagIt.Cloud.API.csproj" />
     </ItemGroup>
 
 </Project>
