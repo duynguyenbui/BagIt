@@ -9,10 +9,21 @@ public static class Extensions
         builder.AddKeycloakAuthentication();
         builder.Services.AddProblemDetails();
         builder.Services.AddAuthorizationBuilder();
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddScoped<TenantProvider>();
 
-        builder.AddSqlServerDbContext<CommonContext>(connectionName: "commondb");
-        // Configure Multi-Tenant DbContext to be connected across dbs
+        builder.Services.AddDbContext<CommonContext>(options => 
+            options.UseSqlServer(builder.Configuration.GetConnectionString("commondb") ?? throw new InvalidOperationException("Connection string 'database' not found.")));
 
+        builder.Services.AddDbContext<CustomerContext>((sp, options) =>
+        {
+            var tenantProvider = sp.GetService<TenantProvider>();
+            var connection = tenantProvider?.GetTenantConnection();
+
+            options.UseSqlServer(builder.Configuration.GetConnectionString(connection));
+        });
+
+        builder.Services.AddScoped<CloudServices, CloudServices>();
         builder.Services.AddMigration<CommonContext, CommonContextSeed>();
     }
 }

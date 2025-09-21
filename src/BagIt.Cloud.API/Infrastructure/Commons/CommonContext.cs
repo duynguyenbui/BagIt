@@ -11,7 +11,7 @@ public class CommonContext : DbContext
     {
     }
 
-    public DbSet<CustomerDatabase>CustomerDatabases { get; set; }
+    public DbSet<CustomerDatabase> CustomerDatabases { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

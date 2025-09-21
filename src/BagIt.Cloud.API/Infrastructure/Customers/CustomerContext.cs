@@ -2,4 +2,11 @@
 
 public class CustomerContext : DbContext
 {
+    public CustomerContext()
+    {
+    }
+
+    public CustomerContext(DbContextOptions options) : base(options)
+    {
+    }
 }
