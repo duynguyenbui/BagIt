@@ -22,7 +22,7 @@ var keycloak = builder.AddKeycloak("keycloak", 8080)
 
 var cloudapi = builder.AddProject<Projects.BagIt_Cloud_API>("cloudapi")
     .WithReference(commondb).WaitFor(commondb)
-    .WithReference(keycloak).WaitFor(keycloak)
+    .WithReference(keycloak)// .WaitFor(keycloak)
     .WithReference(tenant1).WaitFor(tenant1)
     .WithReference(tenant2).WaitFor(tenant2);
 

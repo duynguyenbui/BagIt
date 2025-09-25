@@ -21,7 +21,6 @@ public class TenantProvider
             return string.Empty;
 
         return _commonContext.CustomerDatabases
-            .FirstOrDefault(t => t.Id == tenantId)
-            ?.ConnectionString ?? string.Empty;
+            .FirstOrDefault(tenant => tenant.Id == tenantId)?.Connection ?? string.Empty;
     }
 }

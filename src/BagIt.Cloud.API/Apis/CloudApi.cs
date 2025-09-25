@@ -6,13 +6,11 @@ public static class CloudApi
 {
     public static IEndpointRouteBuilder MapCloudApi(this IEndpointRouteBuilder app)
     {
-        var api = app.MapGroup("/api");
+        var commonApi = app.MapGroup("/api/common");
+        var customerApi = app.MapGroup("/api/customer");
 
-        api.MapGet("/commondb", GetCommonDbs);
-        api.MapGet("/claims", GetClaims);
-        api.MapGet("/tenant", GetTenant);
-
-        api.AllowAnonymous();
+        commonApi.MapGet("/commondb", GetCommonDbs).AllowAnonymous();
+        customerApi.MapGet("/tenant", GetTenant).RequireAuthorization("TenantRequired");
 
         return app;
     }
@@ -28,16 +26,6 @@ public static class CloudApi
         return can
             ? TypedResults.Ok($"connected: {can}")
             : TypedResults.BadRequest("Cannot create connection of this tenant");
-    }
-
-
-    public static async Task<Ok<List<KeyValuePair<string, string>>>> GetClaims(HttpContext context)
-    {
-        var claims = context.User.Claims
-            .Select(claim => new KeyValuePair<string, string>(claim.Type, claim.Value))
-            .ToList();
-
-        return TypedResults.Ok(claims is { Count: > 0 } ? claims : []);
     }
 
     private static async Task<Ok<List<CustomerDatabase>>> GetCommonDbs([AsParameters] CloudServices services)

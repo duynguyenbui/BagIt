@@ -4,13 +4,10 @@ namespace BagIt.Cloud.API.Model;
 
 public class CustomerDatabase
 {
-    public CustomerDatabase(string connectionString)
-    {
-        ConnectionString = connectionString;
-    }
+    public CustomerDatabase(string connection) => Connection = connection;
 
     public int Id { get; set; }
 
     [Required]
-    public string ConnectionString { get; set; }
+    public string Connection { get; set; }
 }

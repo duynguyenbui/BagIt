@@ -6,7 +6,7 @@ class CustomerDatabaseEntityConfiguration : IEntityTypeConfiguration<CustomerDat
     {
         builder.ToTable("CustomerDatabases");
 
-        builder.Property(cd => cd.ConnectionString)
+        builder.Property(cd => cd.Connection)
             .HasColumnType("nvarchar(max)");
     }
 }

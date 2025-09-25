@@ -16,7 +16,7 @@ namespace BagIt.Cloud.API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ConnectionString = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Connection = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

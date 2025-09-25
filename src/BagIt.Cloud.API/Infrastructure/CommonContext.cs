@@ -7,7 +7,7 @@
 /// </remarks>
 public class CommonContext : DbContext
 {
-    public CommonContext(DbContextOptions<CommonContext> options, IConfiguration configuration) : base(options)
+    public CommonContext(DbContextOptions<CommonContext> options) : base(options)
     {
     }
 
